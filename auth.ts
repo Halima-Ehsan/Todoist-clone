@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 const FLASK_API_URL = process.env.NEXT_PUBLIC_FLASK_API_URL;
 
-export const {  signIn, signOut, auth } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -68,7 +68,7 @@ declare module "next-auth" {
 
 
 
-export const handlers = {
+/*export const handlers = {
   GET: async (req: Request) => {
     return new Response(JSON.stringify({ message: "GET request successful" }), { status: 200 });
   },
@@ -76,4 +76,4 @@ export const handlers = {
     const data = await req.json(); 
     return new Response(JSON.stringify({ message: "POST request successful", data }), { status: 201 });
   },
-};
+};*/
