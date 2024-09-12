@@ -169,9 +169,10 @@ def create_project():
         db.session.commit()
 
         return jsonify({'id': new_project.id}), 201
-    except:
+    except Exception as e:
         db.session.rollback()
-        return jsonify({'error': str()}), 500
+        return jsonify({'error': str(e)}), 500
+
 @bp.route('/projects/<int:project_id>', methods=['DELETE'])
 def delete_project(project_id):
     try:
